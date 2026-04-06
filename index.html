@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>Önder Oto | Paslanmaz Oto Aksesuar İmalat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #ffffff;
+            color: #1a1a2e;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a2a4f;
+            border-radius: 10px;
+        }
+
+        h1 { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+        h2 { font-size: clamp(1.4rem, 5vw, 2rem); }
+        h3 { font-size: clamp(1.2rem, 4vw, 1.5rem); }
+        p { font-size: clamp(0.85rem, 3.5vw, 1rem); }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 2px solid #c9a03d;
+            padding: 0.8rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            text-align: left;
+        }
+        .logo .brand {
+            font-size: clamp(1.4rem, 6vw, 2rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #1a2a4f;
+            display: inline-block;
+            line-height: 1.2;
+        }
+        .logo .brand span {
+            font-weight: 600;
+        }
+        .logo .city {
+            font-size: clamp(0.7rem, 3.5vw, 0.85rem);
+            color: #c9a03d;
+            letter-spacing: 3px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .quick-contact {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .quick-contact a {
+            background: #f5f5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #1a2a4f;
+            font-weight: 600;
+            font-size: clamp(0.7rem, 3vw, 0.85rem);
+            transition: all 0.2s;
+            border: 1px solid #c9a03d;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .quick-contact a:hover {
+            background: #1a2a4f;
+            color: white;
+            border-color: #c9a03d;
+        }
+
+        .hero-modern {
+            text-align: center;
+            padding: 2.5rem 1.2rem 2rem;
+            background: linear-gradient(135deg, #fef9f0, #ffffff);
+        }
+        .hero-modern h2 {
+            font-weight: 700;
+            color: #1a1a2e;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .hero-modern h2 span {
+            color: #c9a03d;
+        }
+        .hero-modern p {
+            max-width: 750px;
+            margin: 1rem auto;
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .chip {
+            display: inline-block;
+            background: #1a2a4f11;
+            border: 1px solid #c9a03d;
+            border-radius: 60px;
+            padding: 0.3rem 1.2rem;
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
+            font-weight: 600;
+            color: #1a2a4f;
+            margin-bottom: 1rem;
+        }
+
+        .products-wrapper {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.2rem;
+        }
+        .section-badge {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+            border-left: 4px solid #c9a03d;
+            padding-left: 1rem;
+        }
+        .section-badge h3 {
+            font-weight: 700;
+            color: #1a2a4f;
+        }
+
+        .grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .product-card-glass {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+        .product-card-glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(26,42,79,0.15);
+            border-color: #c9a03d;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            pointer-events: none;
+        }
+        .product-card-glass:hover .product-image img {
+            transform: scale(1.03);
+        }
+        .fallback-emoji {
+            font-size: 3.5rem;
+            opacity: 0.6;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-title {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2a4f;
+        }
+        .product-desc {
+            font-size: clamp(0.75rem, 3vw, 0.85rem);
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+        .btn-pazarlik {
+            background: linear-gradient(95deg, #1a2a4f, #2a3d6e);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 0.7rem 0.5rem;
+            width: 100%;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: clamp(0.8rem, 3.5vw, 0.9rem);
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-pazarlik:hover {
+            background: linear-gradient(95deg, #c9a03d, #b88a2c);
+            color: #1a2a4f;
+            gap: 12px;
+            transform: scale(0.98);
+        }
+
+        .contact-universe {
+            margin: 2rem 1.2rem;
+            background: #1a2a4f;
+            border-radius: 2rem;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+        }
+        .contact-grid-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 0 auto;
+        }
+        .contact-btn-glow {
+            background: rgba(255,255,255,0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #c9a03d;
+            border: 1px solid #c9a03d;
+            transition: 0.2s;
+            font-size: clamp(0.8rem, 3.5vw, 0.95rem);
+        }
+        .contact-btn-glow:hover {
+            background: #c9a03d;
+            color: #1a2a4f;
+            border-color: white;
+        }
+        .address-modern {
+            margin-top: 2rem;
+            background: rgba(255,255,255,0.08);
+            border-radius: 60px;
+            padding: 1rem;
+            max-width: 550px;
+            margin-inline: auto;
+            font-size: 1rem;
+            color: #ddd;
+            border: 0.5px solid #c9a03d;
+            line-height: 1.6;
+        }
+        .address-modern a {
+            color: #c9a03d;
+            text-decoration: none;
+        }
+        .address-modern a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* MODAL - Efektli açılış */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 0 30px rgba(201,160,61,0.4);
+            cursor: pointer;
+            animation: zoomFadeIn 0.25s ease-out;
+        }
+        @keyframes zoomFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #c9a03d;
+            cursor: pointer;
+            font-weight: bold;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            color: white;
+            background: #c9a03d;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .glass-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo {
+                text-align: center;
+            }
+            .product-image {
+                height: 170px;
+            }
+            .modal-close {
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.8rem;
+            }
+            .contact-btn-glow {
+                padding: 0.6rem 1rem;
+                font-size: 0.75rem;
+            }
+            .address-modern {
+                font-size: 0.9rem;
+            }
+        }
+        @media (min-width: 1025px) {
+            .grid-modern {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (min-width: 1400px) {
+            .grid-modern {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        a, button, .product-image {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+<header class="glass-header">
+    <div class="logo">
+        <div class="brand">ÖNDER <span>OTO</span></div>
+        <div class="city">BURSA</div>
+    </div>
+    <div class="quick-contact">
+        <a href="https://wa.me/905511289903?text=Merhaba%20ürünlerinizle%20ilgileniyorum" target="_blank">💬 WhatsApp</a>
+        <a href="https://instagram.com/onderoto_" target="_blank">📷 Instagram</a>
+        <a href="mailto:attackanpagarusa@hotmail.com?subject=Pazarlık%20talebi">✉️ E-posta</a>
+        <a href="tel:+905511289903">📞 Cep</a>
+        <a href="tel:+902242550669">🏢 İşyeri</a>
+    </div>
+</header>
+
+<section class="hero-modern">
+    <span class="chip">🏭 Paslanmaz Krom Aksesuar İmalat 🏭</span>
+    <h2>Paslanmaz <span>Krom Kaplama</span> Oto Aksesuarlar</h2>
+    <p>Ürünlerimizi 0.35mm paslanmaz krom kaplama saçtan üretmekteyiz. Dayanıklı ve 1. kaliteli ham madde ile uzun ömürlü ürünlerimizi sizlere sunmaktayız. 💪</p>
+</section>
+
+<div class="products-wrapper">
+    <div class="section-badge">
+        <h3>⚙️ ÜRÜNLERİMİZ</h3>
+    </div>
+    <div class="grid-modern" id="urunlerGrid"></div>
+</div>
+
+<div class="contact-universe">
+    <div class="contact-grid-buttons">
+        <a href="https://wa.me/905511289903?text=Merhaba%20toptan%20ve%20pazarlık%20için%20yazıyorum" class="contact-btn-glow" target="_blank">💬 WhatsApp</a>
+        <a href="https://instagram.com/onderoto_" class="contact-btn-glow" target="_blank">📷 Instagram</a>
+        <a href="mailto:attackanpagarusa@hotmail.com?subject=Toptan%20fiyat%20bilgisi" class="contact-btn-glow">✉️ E-posta</a>
+        <a href="tel:+905511289903" class="contact-btn-glow">📞 Cep Telefonu</a>
+        <a href="tel:+902242550669" class="contact-btn-glow">🏢 İşyeri Telefonu</a>
+    </div>
+    <div class="address-modern">
+        📍 İMALATHANE ADRESİ <br>
+        Gülbahçe Mahallesi Gürgen Sokak No:21 <br>
+        OSMANGAZİ / BURSA <br><br>
+        📞 <strong>Telefonlarımız:</strong><br>
+        Cep: <a href="tel:+905511289903">0551 128 99 03</a><br>
+        İşyeri: <a href="tel:+902242550669">0224 255 06 69</a>
+    </div>
+</div>
+<footer>
+    © 2025 Önder Oto - Paslanmaz Oto Aksesuar İmalat
+</footer>
+
+<div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="modalImg" alt="Büyük görünüm">
+</div>
+
+<script>
+    const urunler = [
+        { name: "Plaka Altlığı", desc: "Standart plaka altlığı, dayanıklı paslanmaz malzeme, tüm araçlar için uygun.", img: "AracPlaka.jpg" },
+        { name: "Motor Plaka Altlığı", desc: "Motor özel plaka altlığı, paslanmaz, şık tasarım.", img: "MotorPlaka.jpg" },
+        { name: "Delikli Motor Plaka Altlığı", desc: "Motor Plaka Altlıkları için daha kullanışlı yeni bir model.", img: "DelikliMotorPlaka.jpg" },
+        { name: "Traktör Plaka Altlığı", desc: "Tarım araçları ve bunun benzeri plaka kullanan araçlar için ideal.", img: "TraktorPlaka.jpg" },
+        { name: "Sis Demiri", desc: "Sağlam krom kaplama sis demiri, kamyonet ve SUV için ideal.", img: "SisDemiri.jpg" },
+        { name: "Egzoz Sacı", desc: "Egzoz çıkışında tamponunuza şık bir görüntü verir.", img: "EgsozSaci.jpg" },
+        { name: "Marşpiyel Nikelajı", desc: "Parlak nikelaj kaplama, marşpiyel koruma ve şıklık.", img: "Marspiyel.jpg" },
+        { name: "20cm Jant Fırfırı", desc: "Aracınızın tekerleklerine farklı bir hava katan paslanmaz krom fırfır.", img: "Firfir20cm.jpg" },
+        { name: "23cm Jant Fırfırı", desc: "Aracınızın tekerleklerine farklı bir hava katan paslanmaz krom fırfır.", img: "Firfir23cm.jpg" },
+        { name: "30cm Jant Fırfırı", desc: "Aracınızın tekerleklerine farklı bir hava katan paslanmaz krom fırfır.", img: "Firfir30cm.jpg" },
+        { name: "30cm Jant Fırfırı (Geniş)", desc: "Aracınızın tekerleklerine farklı bir hava katan paslanmaz krom fırfır.", img: "KalinFirfir30cm.jpg" }
+    ];
+
+    const grid = document.getElementById("urunlerGrid");
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.querySelector(".modal-close");
+
+    function openModal(imgSrc) {
+        modal.style.display = "flex";
+        modalImg.src = imgSrc;
+        document.body.style.overflow = "hidden";
+        modalImg.style.animation = "none";
+        setTimeout(() => {
+            modalImg.style.animation = "zoomFadeIn 0.25s ease-out";
+        }, 10);
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+        modalImg.src = "";
+        document.body.style.overflow = "";
+    }
+
+    modal.addEventListener("click", function(e) {
+        if (e.target === modal || e.target === modalImg) {
+            closeModal();
+        }
+    });
+    modalClose.addEventListener("click", closeModal);
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape" && modal.style.display === "flex") {
+            closeModal();
+        }
+    });
+
+    function renderProducts() {
+        if (!grid) return;
+        grid.innerHTML = "";
+        urunler.forEach(urun => {
+            const card = document.createElement("div");
+            card.className = "product-card-glass";
+            
+            const waMsg = `Merhaba, ${urun.name} ürünü için fiyat ve pazarlık hakkında bilgi almak istiyorum. (toptan veya adet bazlı)`;
+            const waLink = `https://wa.me/905511289903?text=${encodeURIComponent(waMsg)}`;
+            const imgPath = urun.img;
+            
+            const imageHtml = `<img src="${imgPath}" alt="${urun.name}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'fallback-emoji\' style=\'font-size:3rem;\'>🔩</div>';">`;
+            
+            card.innerHTML = `
+                <div class="product-image" data-img="${imgPath}">
+                    ${imageHtml}
+                </div>
+                <div class="product-info">
+                    <div class="product-title">${urun.name}</div>
+                    <div class="product-desc">${urun.desc}</div>
+                    <a href="${waLink}" target="_blank" class="btn-pazarlik">
+                        💰 Bilgi için bize ulaşın 💰
+                    </a>
+                </div>
+            `;
+            
+            const productImageDiv = card.querySelector(".product-image");
+            productImageDiv.addEventListener("click", function(e) {
+                e.stopPropagation();
+                const imgElement = this.querySelector("img");
+                if (imgElement && imgElement.src) {
+                    openModal(imgElement.src);
+                }
+            });
+            
+            grid.appendChild(card);
+        });
+    }
+    renderProducts();
+</script>
+</body>
+</html>
